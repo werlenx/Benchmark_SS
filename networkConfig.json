@@ -1,0 +1,23 @@
+{
+  "caliper": {
+    "blockchain": "ethereum"
+  },
+  "ethereum": {
+    "url": "ws://localhost:8545",
+    "contractDeployerAddress": "0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab",
+    "fromAddress": "0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab",
+    "transactionConfirmationBlocks": 12,
+    "contracts": {
+      "simpleStorage": {
+        "id": "simpleStorage",
+        "path": "./build/contracts/SimpleStorage.json", 
+        "gas": {
+          "open": 100000,
+          "query": 200000,
+          "transfer": 300000
+        }
+      }
+    }
+  }
+}
+
