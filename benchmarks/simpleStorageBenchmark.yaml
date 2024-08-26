@@ -1,0 +1,43 @@
+test:
+  name: "SimpleStorage"
+  description: "Benchmark for SimpleStorage contract"
+  workers:
+    type: "local"
+    number: 1
+
+    blockchain:
+      type: ethereum
+      framework: ethereum
+
+  rounds:
+    - label: setPhase
+      description: "Set data"
+      txDuration: 60
+      rateControl:
+        type: "fixed-rate"
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/simpleStorageWorkload.js
+
+        arguments:
+          abi: ./build/contracts/SimpleStorage.json
+          contractAddress: '0xe78a0f7e598cc8b0bb87894b0f60dd2a88d6a8ab'  # Endereço do contrato implantado
+          method: set
+          value: 100
+          gas: 6721975
+
+    - label: getPhase
+      description: "Get data"
+      txDuration: 60
+      rateControl:
+        type: "fixed-rate"
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/simpleStorageWorkload.js
+        arguments:
+          abi: ./build/contracts/SimpleStorage.json
+          contractAddress: '0xe78a0f7e598cc8b0bb87894b0f60dd2a88d6a8ab'
+          method: get
+          gas: 6721975
